@@ -15,7 +15,6 @@ from sklearn.preprocessing import (
 )
 from sklearn.impute import SimpleImputer
 from feature_engine.wrappers import SklearnTransformerWrapper
-from feature_engine.encoding import RareLabelEncoder
 from sklearn.feature_selection import VarianceThreshold
 from sklearn.impute import KNNImputer
 
@@ -76,5 +75,8 @@ def make_cleaned():
     cleaning = nzv_remover.fit_transform(cleaning)
 
     assert sum(cleaning.isna().sum()) == 0
+
+    # Remove one outlier datapoint
+    clean
 
     return cleaning
