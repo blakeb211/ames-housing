@@ -17,6 +17,7 @@ from sklearn.impute import SimpleImputer
 from feature_engine.wrappers import SklearnTransformerWrapper
 from sklearn.feature_selection import VarianceThreshold
 from sklearn.impute import KNNImputer
+from sklearn.model_selection import train_test_split
 
 
 def make_raw():
@@ -73,10 +74,23 @@ def make_cleaned():
     nzv_remover = SklearnTransformerWrapper(
         transformer=VarianceThreshold(threshold=0.1))
     cleaning = nzv_remover.fit_transform(cleaning)
-
+    
     assert sum(cleaning.isna().sum()) == 0
-
-    # Remove one outlier datapoint
-    clean
-
+    
+    # Impute a common sense feature
+    # cleaning["TotalBaths"] = cleaning.HalfBath + cleaning.FullBath
+    
     return cleaning
+
+def make_train_test():
+    """ Return X_train, X_test, y_train, y_test the same way for every modeling file. """
+    clean = make_cleaned()
+    # Remove Order ID and PID due to it giving information that will not be present in new data. 
+    clean.pop('Order')
+    clean.pop('PID')
+    y = clean.pop('SalePrice')
+    X = clean
+    bins = np.float64(np.histogram(y,bins=15)[1])
+    bins = np.digitize(y,bins[:-1])
+    return train_test_split(X,y,test_size=0.25,random_state=42,stratify=bins)
+
