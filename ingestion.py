@@ -33,7 +33,10 @@ def make_cleaned():
     """
     raw = make_raw()
     cleaning = raw.copy()
-
+    
+    # Convert MsSubClass to strings so that they will be treated as categorical
+    cleaning.MSSubClass = cleaning.MSSubClass.apply(str)
+    
     # Convert ordered categorical values to numbers
     ordinal_vals = ("Po", "Fa", "TA", "Gd", "Ex")
 
@@ -85,12 +88,12 @@ def make_cleaned():
 def make_train_test():
     """ Return X_train, X_test, y_train, y_test the same way for every modeling file. """
     clean = make_cleaned()
-    # Remove Order ID and PID due to it giving information that will not be present in new data. 
+    # Remove Order ID and PID due to it giving information that will not be present in general test data.
     clean.pop('Order')
     clean.pop('PID')
     y = clean.pop('SalePrice')
     X = clean
     bins = np.float64(np.histogram(y,bins=15)[1])
     bins = np.digitize(y,bins[:-1])
-    return train_test_split(X,y,test_size=0.25,random_state=42,stratify=bins)
+    return train_test_split(X,y,test_size=0.33,random_state=42,stratify=bins)
 

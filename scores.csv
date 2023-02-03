@@ -1,0 +1,6 @@
+name,rmse,params
+linearsvr,34058.34988029099,{'linearsvr__C': 0.019306977288832496}
+elasticnet,34169.86593448573,"{'elasticnet__alpha': 0.9999999999999999, 'elasticnet__l1_ratio': 0.9}"
+decisiontreeregressor,41756.96851386337,{'decisiontreeregressor__max_depth': '7'}
+kneighborsregressor,33167.004715855124,"{'kneighborsregressor__metric': 'cityblock', 'kneighborsregressor__n_neighbors': 6}"
+baggingregressor,28580.53205826955,{'baggingregressor__n_estimators': 41}
