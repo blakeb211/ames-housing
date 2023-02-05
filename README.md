@@ -3,6 +3,9 @@
 # What 
 - Demonstate machine learning techniques and concepts on the Ames housing dataset. 
 
+# Why
+- Demonstrate knowledge obtained from the resources at the bottom to a popular dataset.
+
 # Plan
 1. Ingestion
 1. Exploration
@@ -12,9 +15,10 @@
 1. Miscellaneous topics: regularization, PCA, metrics, target variable transformation 
 
 # Models
-* KNN, Linear, Decision Tree, Bagged Trees, Random Forest, Gradient Boosted, Stacked
+* KNN, Linear, Decision Tree, Bagged Trees, Random Forest, Gradient Boosted, AutoML 
 
 # Feature Engineering Notes 
+1. A mixture of 'most frequent value' and k-nearest neighbor missing value imputation.
 1. Removed 5 outliers observed in scatter plot of GrLivArea and SalePrice. 
 
 ## Observations
@@ -27,6 +31,6 @@ than what will generalize best to new data. This did not occur (for this dataset
 
 # Resources
 1. Georgetown Data Science Certificate Program
-1. Hands-on Machine Learning with R book
-1. Vectors Matrices and Least Squares (VMLS) book
-1. Sklearn and Xgboost api docs
+1. Hands-on Machine Learning with R book, Boehmke and Greenwell
+1. Vectors Matrices and Least Squares book, Boyd and Vandenberghe
+1. Sklearn, Yellowbrick and Xgboost api docs
