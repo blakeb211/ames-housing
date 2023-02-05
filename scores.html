@@ -1,7 +1,6 @@
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th></th>
       <th>name</th>
       <th>rmse</th>
       <th>params</th>
@@ -9,34 +8,34 @@
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>linearsvr</td>
-      <td>34058.349880</td>
-      <td>{'linearsvr__C': 0.019306977288832496}</td>
+      <td>xgbregressor</td>
+      <td>22550.205118</td>
+      <td>{'objective': 'reg:squarederror', 'base_score': None, 'booster': 'gbtree', 'callbacks': None, 'colsample_bylevel': None, 'colsample_bynode': None, 'colsample_bytree': None, 'early_stopping_rounds': None, 'enable_categorical': False, 'eval_metric': None, 'feature_types': None, 'gamma': None, 'gpu_id': None, 'grow_policy': None, 'importance_type': None, 'interaction_constraints': None, 'learning_rate': None, 'max_bin': None, 'max_cat_threshold': None, 'max_cat_to_onehot': None, 'max_delta_step': None, 'max_depth': 2, 'max_leaves': None, 'min_child_weight': None, 'missing': nan, 'monotone_constraints': None, 'n_estimators': 350, 'n_jobs': 2, 'num_parallel_tree': None, 'predictor': None, 'random_state': 42, 'reg_alpha': None, 'reg_lambda': None, 'sampling_method': None, 'scale_pos_weight': None, 'subsample': None, 'tree_method': None, 'validate_parameters': None, 'verbosity': None}</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>elasticnet</td>
-      <td>34169.865934</td>
-      <td>{'elasticnet__alpha': 0.9999999999999999, 'elasticnet__l1_ratio': 0.9}</td>
+      <td>randomforestregressor</td>
+      <td>23584.894381</td>
+      <td>{'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': 11, 'max_features': 0.4, 'max_leaf_nodes': None, 'max_samples': 1.0, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 400, 'n_jobs': 6, 'oob_score': False, 'random_state': 42, 'verbose': 0, 'warm_start': False}</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>decisiontreeregressor</td>
-      <td>41756.968514</td>
-      <td>{'decisiontreeregressor__max_depth': '7'}</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>kneighborsregressor</td>
-      <td>33167.004716</td>
-      <td>{'kneighborsregressor__metric': 'cityblock', 'kneighborsregressor__n_neighbors': 6}</td>
-    </tr>
-    <tr>
-      <th>4</th>
       <td>baggingregressor</td>
-      <td>28271.619025</td>
-      <td>{'baggingregressor__n_estimators': 41}</td>
+      <td>25898.374585</td>
+      <td>{'base_estimator': 'deprecated', 'bootstrap': True, 'bootstrap_features': False, 'estimator__ccp_alpha': 0.0, 'estimator__criterion': 'squared_error', 'estimator__max_depth': 8, 'estimator__max_features': None, 'estimator__max_leaf_nodes': None, 'estimator__min_impurity_decrease': 0.0, 'estimator__min_samples_leaf': 1, 'estimator__min_samples_split': 2, 'estimator__min_weight_fraction_leaf': 0.0, 'estimator__random_state': None, 'estimator__splitter': 'best', 'estimator': DecisionTreeRegressor(max_depth=8), 'max_features': 1.0, 'max_samples': 1.0, 'n_estimators': 401, 'n_jobs': 3, 'oob_score': True, 'random_state': 42, 'verbose': 0, 'warm_start': False}</td>
+    </tr>
+    <tr>
+      <td>elasticnet</td>
+      <td>26081.631550</td>
+      <td>{'alpha': 1.4, 'copy_X': True, 'fit_intercept': True, 'l1_ratio': 1.0, 'max_iter': 2000, 'positive': False, 'precompute': False, 'random_state': None, 'selection': 'cyclic', 'tol': 0.0001, 'warm_start': False}</td>
+    </tr>
+    <tr>
+      <td>kneighborsregressor</td>
+      <td>29932.151080</td>
+      <td>{'algorithm': 'auto', 'leaf_size': 30, 'metric': 'cityblock', 'metric_params': None, 'n_jobs': 3, 'n_neighbors': 7, 'p': 2, 'weights': 'uniform'}</td>
+    </tr>
+    <tr>
+      <td>decisiontreeregressor</td>
+      <td>34287.028091</td>
+      <td>{'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': 8, 'max_features': None, 'max_leaf_nodes': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'random_state': 42, 'splitter': 'best'}</td>
     </tr>
   </tbody>
 </table>

@@ -4,13 +4,12 @@ import pandas as pd
 import os
 
 
-def save_score(param_dict, rmse):
+def save_score(pipe, rmse):
     """ Save the grid_search.best_params_ dictionary and rmse to a file.
     Load local scores.csv dataframe.Save or replace entry with the same 
     key as param_dict."""
-
-    # Get model name. It is the first key's word before the double underscore.
-    model_name = list(param_dict.keys())[0].split('__')[0]
+    model_name = list(pipe.named_steps.keys())[-1]
+    param_dict = pipe._final_estimator.get_params()
 
     # Prepare new row for the dataframe
     col_names = "name", "rmse", "params"

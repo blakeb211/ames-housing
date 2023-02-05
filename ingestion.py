@@ -79,15 +79,13 @@ def make_cleaned():
     cleaning = nzv_remover.fit_transform(cleaning)
     
     assert sum(cleaning.isna().sum()) == 0
-    
-    # Impute a common sense feature
-    # cleaning["TotalBaths"] = cleaning.HalfBath + cleaning.FullBath
-    
     return cleaning
 
 def make_train_test():
     """ Return X_train, X_test, y_train, y_test the same way for every modeling file. """
     clean = make_cleaned()
+    # Remove 5 outliers
+    clean = clean[clean.GrLivArea <= 4000]
     # Remove Order ID and PID due to it giving information that will not be present in general test data.
     clean.pop('Order')
     clean.pop('PID')
