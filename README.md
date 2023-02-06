@@ -1,40 +1,56 @@
-# From Least Squares to AutoML 
+# From Linear Models to AutoML with Sklearn 
 
 # What 
-- Demonstate machine learning techniques and concepts on the Ames housing dataset. 
+- Demonstration with working code for going from linear models to neural nets to trees to AutoML 
+with common python libaries, Sklearn, and its companion libraries.
 
 # Why
-- Demonstrate knowledge obtained from the resources at the bottom on a popular dataset.
+- Apply and explain knowledge from the resources at the bottom to a popular dataset.
+
+# How
 
 # Plan
-1. Ingestion
+1. Ingestion and Wrangling
 1. Exploration
-1. Feature Engineering
 1. Model (tuning, validation)
-1. Miscellaneous concepts: regularization, PCA, metrics, target variable transformation 
-1. Feature Importance Analysis
-1. Write algorithm overviews
-1. Check impact of additional feature engineering on top two models 
+1. Feature Importance
+1. Check impact of additional feature engineering on top model 
 1. Clean up comments and repo presentation
 1. Write an article
 
-# Models
+## Models
 * Linear, KNN, Decision Tree, Bagged Trees, Random Forest, Gradient Boosted, AutoML 
 
-# Algorithm overviews
-* Linear (Ordinary Least Squares)
-* K-Nearest Neighbor
-* Decision Tree
-* Bagged Trees
-* Random Forest
-* Gradient Boosted Trees
-* AutoML 
+## Simplified Algorithm Overviews
+### Regularized Linear Regression (Ordinary Least Squares)  
+Solve the least squares problem to get weights (slopes) of each feature. Feature scaling is important. Regularization reduces co-linearity.
+
+### K-Nearest Neighbor
+Predict the target value as the average of a certain number of nearest neighbors. Nearest neighbor determined from a distance metric, e.g. the Euclidiean norm (square root of summed squares of differences), or the manhattan distance (sum of absolute values of differences). Feature scaling is important.
+
+### Decision Tree
+Cycle through features to find the one that best splits the target variable into two groups. Add split (branch) to the tree. Repeat. A distance metric is used to measure how good each split is.
+
+### Bagged Trees
+A group of single trees. Sample with replacement from the training data (bootstrap sampling). Train decision tree on this bootstrap sample. Repeat. Combine results of all trees to get the model prediction.
+
+### Random Forest
+Bagged trees with additional randomness in the feature cycling step. Instead of cycling through all features for best split, only cycle through a certain percentage of them. Both bagging and feature randomization can add a large improvment to a single decision tree, despite what intuition might tell us. 
+
+### Gradient Boosted Trees
+One small-ish tree is created. The model errors from that tree are treated as training data for a new tree. Repeat. Popular packages like XGBoost add in several other techniques like bagging, feature randomization, regularization, and more. 
+
+### Neural Network
+The layer sizes of the neural network (layer sizes) is chosen. Since the feedforward NN used here has 4 layers, it is a "deep" net. Numerical optimization (backpropagation, gradient descent) is done to find the weights that minimize the performance metric (loss function). See the GPT transformer diagram for an idea of how complex "deep learning" network architectures can get.
+
+### AutoML  
+Algorithms for feature pre-processing are automatically applied, partially informed by a database of what worked on previous similar datasets. Several models are created and ranked. A group (ensemble) of models with different error shapes are stacked together. A voting procedure combines their answers to give the final prediction. 
 
 # Feature Engineering Notes 
 1. Imputed missing values using 'most frequent value' and k-nearest neighbor.
 1. Removed 5 outliers observed in scatter plot of GrLivArea and SalePrice. 
 
-## Observations
+# Observations
 1. l1 norm is the cityblock or manhattan distance. l2 norm is the euclidean or minkowski distance.
 1. Validation Curves shapes are model dependent. 
 1. Training time for SVR models with an rbf kernel depends heavily on the gamma parameter
@@ -42,13 +58,12 @@
 than what will generalize best to new data. This did not occur (for this dataset) with tree ensemble algorithms.
 1. Bagging (bootstrap aggregation) improves over a single decision tree quite a bit
 
-# Resources
+# Machine Learning Resources
 1. Georgetown Data Science Certificate Program
 1. Hands-on Machine Learning with R book, Boehmke and Greenwell
 1. Vectors Matrices and Least Squares book, Boyd and Vandenberghe
-1. API docs and code for the various libraries Sklearn, Xgboost, AutoSklearn, Numpy, Pandas 
-
-# Python Resources
+1. API docs and code for the various libraries Sklearn, Xgboost, AutoSklearn, Numpy, Pandas, etc.
+### Python focused
 1. ThinkPython
 1. Automate The Boring Stuff
 1. ThinkStats
