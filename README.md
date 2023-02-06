@@ -1,24 +1,37 @@
-# House Prices Project - Ames Dataset
+# From Least Squares to AutoML 
 
 # What 
 - Demonstate machine learning techniques and concepts on the Ames housing dataset. 
 
 # Why
-- Demonstrate knowledge obtained from the resources at the bottom to a popular dataset.
+- Demonstrate knowledge obtained from the resources at the bottom on a popular dataset.
 
 # Plan
 1. Ingestion
 1. Exploration
 1. Feature Engineering
 1. Model (tuning, validation)
+1. Miscellaneous concepts: regularization, PCA, metrics, target variable transformation 
 1. Feature Importance Analysis
-1. Miscellaneous topics: regularization, PCA, metrics, target variable transformation 
+1. Write algorithm overviews
+1. Check impact of additional feature engineering on top two models 
+1. Clean up comments and repo presentation
+1. Write an article
 
 # Models
-* KNN, Linear, Decision Tree, Bagged Trees, Random Forest, Gradient Boosted, AutoML 
+* Linear, KNN, Decision Tree, Bagged Trees, Random Forest, Gradient Boosted, AutoML 
+
+# Algorithm overviews
+* Linear (Ordinary Least Squares)
+* K-Nearest Neighbor
+* Decision Tree
+* Bagged Trees
+* Random Forest
+* Gradient Boosted Trees
+* AutoML 
 
 # Feature Engineering Notes 
-1. A mixture of 'most frequent value' and k-nearest neighbor missing value imputation.
+1. Imputed missing values using 'most frequent value' and k-nearest neighbor.
 1. Removed 5 outliers observed in scatter plot of GrLivArea and SalePrice. 
 
 ## Observations
@@ -33,4 +46,9 @@ than what will generalize best to new data. This did not occur (for this dataset
 1. Georgetown Data Science Certificate Program
 1. Hands-on Machine Learning with R book, Boehmke and Greenwell
 1. Vectors Matrices and Least Squares book, Boyd and Vandenberghe
-1. Sklearn, Yellowbrick and Xgboost api docs
+1. API docs and code for the various libraries Sklearn, Xgboost, AutoSklearn, Numpy, Pandas 
+
+# Python Resources
+1. ThinkPython
+1. Automate The Boring Stuff
+1. ThinkStats

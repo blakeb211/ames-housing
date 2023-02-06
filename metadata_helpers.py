@@ -32,6 +32,9 @@ def save_score(pipe, rmse):
     else:
         df = pd.concat([df, new_row], axis=0)
 
+    # Save updated df to disk as csv and html
+    df.sort_values(by='rmse',ascending=True,inplace=True)
+    df.to_html("scores.html",index=False)
     df.to_csv(scores_filename, index=False)
 
 
@@ -63,6 +66,9 @@ def save_score_automl(automl_obj, rmse):
     else:
         df = pd.concat([df, new_row], axis=0)
 
+    # Save updated df to disk as csv and html
+    df.sort_values(by='rmse',ascending=True,inplace=True)
+    df.to_html("scores.html",index=False)
     df.to_csv(scores_filename, index=False)
 
 
