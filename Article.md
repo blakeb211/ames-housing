@@ -1,10 +1,9 @@
-This article outlines a cleaner modeling process using Sklearn and a few companion libraries. It guides the reader on how to create the full range of ML models--regularized linear, bagged and boosted trees, to deep neural networks and automated modeling (automl)--on the Ames housing dataset.
+This article outlines a better Sklearn modeling process using companion libraries. Companion libraries can reduce the boilerplate and add new functionality (like AutoML) to your existing process.
 
-A very small survey of working data scientists suggests that experienced and inexperienced Sklearn users will find something new here.
+Based on a (very small) survey of working data scientists--experienced and inexperienced Sklearn users should find something new here.
 
-The code is here. Steps left out of the article can be found there easily. 
+The companion code demonstrates these points on the full range of ML models--regularized linear, bagged and boosted trees, to deep neural networks and automated modeling (automl)--on the Ames housing dataset. 
 
-Companion libraries help us reduce our boilerplate and add new functionality to the widely used Sklearn.
 * Feature-Engine - provides simpler tranformers, reducing boilerplate and tightening up pipelines
 * Yellowbrick - provides wrappers over estimators to make common visualizations quickly
 * XGBoost - provides an additional (and widely popular) gradient boosting implementation
@@ -12,7 +11,6 @@ Companion libraries help us reduce our boilerplate and add new functionality to 
 
 After ingestion and creating a train-test split, we construct preprocessing recipes called **Pipelines** to automate our preprocessing steps such as scaling and one-hot encoding. These produce clean code and guard against subtle data leakage during K-Fold validation.
 
-**There is an ingestion script** so that your exploration and modeling files aren't littered with copy-pasted code. The modeling and exploration notebooks or scripts stay independent from one another and changes to ingestion / cleaning can be made once.
 
 **Write tighter pipeline code with SklearnTransformWrapper and make_pipeline**
 Feature Engine's *SklearnTransformWrapper* wraps our StandardScaler() and OneHotEncoder() so that we can put them directly into our Pipeline object. Sklearn's *make_pipeline* names the steps for us. GridSearchCV tunes the hyperparameters through the name of each step. No more ColumnTransformer and no more manual pipeline construction. 
