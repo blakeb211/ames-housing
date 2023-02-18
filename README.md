@@ -1,4 +1,4 @@
-# From Linear Models to AutoML with Sklearn 
+# From Linear Models To AutoML with Sklearn & Friends
 
 # What 
 - Demonstration with working code for going from linear models to neural nets to trees to AutoML 
@@ -9,14 +9,16 @@ with common python libaries, Sklearn, and its companion libraries.
 
 # How
 
+**There is an ingestion script** so that your exploration and modeling files aren't littered with copy-pasted code. The modeling and exploration notebooks or scripts stay independent from one another and changes to ingestion / cleaning can be made once.
+
 # Plan
 1. Ingestion and Wrangling
 1. Exploration
 1. Model (tuning, validation)
 1. Feature Importance
 1. Check impact of additional feature engineering on top model 
-1. Clean up comments and repo presentation
 1. Write an article
+1. Clean up comments and repo presentation
 
 ## Models
 * Linear, KNN, Decision Tree, Bagged Trees, Random Forest, Gradient Boosted, AutoML 
@@ -38,7 +40,7 @@ A group of single trees. Sample with replacement from the training data (bootstr
 Bagged trees with additional randomness in the feature cycling step. Instead of cycling through all features for best split, only cycle through a certain percentage of them. Both bagging and feature randomization can add a large improvment to a single decision tree, despite what intuition might tell us. 
 
 ### Gradient Boosted Trees
-One small-ish tree is created. The model errors from that tree are treated as training data for a new tree. Repeat. Popular packages like XGBoost add in several other techniques like bagging, feature randomization, regularization, and more. 
+One relatively shallow tree is created. The model errors from that tree are treated as training data for a new tree. Repeat. Popular packages like XGBoost add in several other techniques like bagging, feature randomization, regularization, and more. 
 
 ### Neural Network
 The layer sizes of the neural network (layer sizes) is chosen. Since the feedforward NN used here has 4 layers, it is a "deep" net. Numerical optimization (backpropagation, gradient descent) is done to find the weights that minimize the performance metric (loss function). See the GPT transformer diagram for an idea of how complex "deep learning" network architectures can get.
@@ -62,8 +64,5 @@ than what will generalize best to new data. This did not occur (for this dataset
 1. Georgetown Data Science Certificate Program
 1. Hands-on Machine Learning with R book, Boehmke and Greenwell
 1. Vectors Matrices and Least Squares book, Boyd and Vandenberghe
-1. API docs and code for the various libraries Sklearn, Xgboost, AutoSklearn, Numpy, Pandas, etc.
-### Python focused
-1. ThinkPython
-1. Automate The Boring Stuff
 1. ThinkStats
+1. API docs and code for the various libraries Sklearn, Xgboost, AutoSklearn, Numpy, Pandas
