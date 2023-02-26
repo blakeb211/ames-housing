@@ -10,7 +10,15 @@ with common python libaries, Sklearn, and its companion libraries.
 # How
 - *ingestion.py* get called by each modeling notebook to generate dataframes for modeling
 - *metadata_helper.py* gets called by each modeling notebook to save the modeling metrics to csv and html files
-- Each modeling notebook (prefixed with *model__*) is independent from the others. They only depend on the two ingestion and score-saving scripts above.
+- Each modeling notebook (prefixed with *model_*) is independent from the others. They only depend on the two ingestion and score-saving scripts above.
+
+# Recommended setup
+- Use `virtualenv` to create a virtual environment with Python 3.9. Activate the environment. Install the dependencies with pip.
+``` 
+python3.9 -m venv env 
+source .env/bin/activate 
+pip install -r requirements.txt
+```
 
 # Plan
 1. Ingestion and Wrangling
@@ -19,7 +27,8 @@ with common python libaries, Sklearn, and its companion libraries.
 1. Clean up comments
 1. Generate scores figure
 1. Save any other necessary figures
-1. Write an article
+1. Make and test code examples in article
+1. Finish article
 1. Publish to Medium
 1. Submit to TDS
 
