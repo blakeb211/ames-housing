@@ -1,24 +1,27 @@
 # From Linear Models To AutoML with Sklearn & Friends
 
 # What 
-- Demonstration with working code for going from linear models to neural nets to trees to AutoML 
+- Demonstration notebooks showing the full modeling pipeline for linear models to neural nets to trees to AutoML 
 with common python libaries, Sklearn, and its companion libraries.
 
 # Why
 - Apply and explain knowledge from the resources at the bottom to a popular dataset.
 
 # How
-
-**There is an ingestion script** so that your exploration and modeling files aren't littered with copy-pasted code. The modeling and exploration notebooks or scripts stay independent from one another and changes to ingestion / cleaning can be made once.
+- *ingestion.py* get called by each modeling notebook to generate dataframes for modeling
+- *metadata_helper.py* gets called by each modeling notebook to save the modeling metrics to csv and html files
+- Each modeling notebook (prefixed with *model__*) is independent from the others. They only depend on the two ingestion and score-saving scripts above.
 
 # Plan
 1. Ingestion and Wrangling
 1. Exploration
 1. Model (tuning, validation)
-1. Feature Importance
-1. Check impact of additional feature engineering on top model 
+1. Clean up comments
+1. Generate scores figure
+1. Save any other necessary figures
 1. Write an article
-1. Clean up comments and repo presentation
+1. Publish to Medium
+1. Submit to TDS
 
 ## Models
 * Linear, KNN, Decision Tree, Bagged Trees, Random Forest, Gradient Boosted, AutoML 
@@ -52,8 +55,7 @@ Algorithms for feature pre-processing are automatically applied, partially infor
 1. Imputed missing values using 'most frequent value' and k-nearest neighbor.
 1. Removed 5 outliers observed in scatter plot of GrLivArea and SalePrice. 
 
-# Observations
-1. l1 norm is the cityblock or manhattan distance. l2 norm is the euclidean or minkowski distance.
+# Miscellaneous Observations
 1. Validation Curves shapes are model dependent. 
 1. Training time for SVR models with an rbf kernel depends heavily on the gamma parameter
 1. For a single decision tree, the validation curve may select a more complicated model 
