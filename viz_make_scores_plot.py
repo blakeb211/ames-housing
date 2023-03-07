@@ -1,26 +1,31 @@
-import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-from matplotlib import font_manager
+"""
+@TODO: Add AdaBoost model to complete sklearn models so that it can be judged fairly next to XGBoost.
+@TODO: Add LinearSVR too since it is one of the AutoML resulted models?
+Not feeling like adding it is not a good reason to avoid it.
+"""
 
 # Print font options
 if False:
+    from matplotlib import font_manager
     font_names = sorted(font_manager.get_font_names())
     print(f"font names {font_names}")
 
-
+# Ready the data
 scores = pd.read_csv("scores.csv")
 scores.sort_values(by='rmse', ascending=False, inplace=True)
-
 rmse = scores.rmse / 1000
 
 fig, ax = plt.subplots()
 fig.set_dpi(300)
 fig.set_size_inches(w=5, h=3)
 size_w, size_h = fig.get_size_inches()
+
 print(f"size of pic after setting: {size_w} x {size_h}")
+
 x_labels = "Single Tree", "KNN", "Bagged Trees", "Regularized Linear", "Neural Net", "Random Forest", "XGBoosted Tree", "AutoML"
 
 # Only worry about fiddling with these 3
@@ -45,7 +50,7 @@ plt.yticks(ticks=ax.get_yticks(), labels=ax.get_yticklabels())
 plt.title("Housing Price Prediction Error",**font_param_title)
 
 def add_labels_1():
-    # Label bars 
+    """ Label bars """
     text_x_offset=0.12
     y_text = 3 
     x_text_range = range(len(x_labels))
@@ -54,15 +59,14 @@ def add_labels_1():
         ax.text(x=x-text_x_offset,y=y_text,s=lab,rotation=90,color='white', **font_param_barlabels)
 
 add_labels_1()
-ax.legend()
+
+# Set up legend
+import matplotlib.patches as patches
+plt.rcParams['legend.handlelength'] = 1
+plt.rcParams['legend.handleheight'] = 1.125
+plt.rcParams['legend.numpoints'] = 1
+rect1 = patches.Rectangle((0,0),1,1,facecolor='blue')
+rect2 = patches.Rectangle((0,0),1,1,facecolor='orange')
+plt.legend((rect1, rect2), ('sklearn', 'helper lib'))
+
 plt.show()
-
-
-if False:
-    sns.set(font_scale=1.5)
-    sns.barplot(x=scores.name, y=scores.rmse, hue=hues)
-    plt.ylabel("<---- Better RMSE")
-    plt.xticks(labels=x_labels, rotation=90, ticks=ax.get_xticks())
-    plt.xlabel("Estimator")
-    plt.show()
-
