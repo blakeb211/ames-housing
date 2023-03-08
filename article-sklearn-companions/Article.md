@@ -17,25 +17,32 @@ Let's get to it.
 
 After ingestion and creating a train-test split, we construct preprocessing recipes called **Pipelines** to automate our preprocessing steps such as scaling and one-hot encoding. These are easy to read and guard against subtle data leakage during K-Fold validation.
 
-Feature Engine's *SklearnTransformWrapper* wraps our StandardScaler() and OneHotEncoder() so that we can put them directly into our Pipeline object. No more ColumnTransformer. Data processed by this feature engine wrapper comes out the other side as a pandas dataframe instead of a numpy ndarray. 
+Feature Engine's *SklearnTransformWrapper* wraps our StandardScaler() and OneHotEncoder() so that we can put them directly into our Pipeline object. No more ColumnTransformer. Data comes out as a dataframe so that we don't need to fumble with numpy ndarrays. You'll thank yourself if later work with that same scaler or encoder requires you to use it outside of the pipeline.
 
-Sklearn's *make_pipeline* names the steps so that our GridSearchCV object can talk to our pipeline. Just query the step names (here, 'elasticnet') using `pipe.named_steps`.
+Sklearn's *make_pipeline* names the steps so that our GridSearchCV object can talk to our pipeline. 
+Just query the step names with `pipe.named_steps`. For this example it tells us that our estimator is called 'elasticnet'.
 
 GridSearchCV tunes the hyperparameters through the name of each step. 
 
 ```
-# Left out Sklearn imports and dataframe creation 
+# skipping typical sklearn imports and dataframe creation 
+
 from feature_engine.wrappers import SklearnTransformerWrapper
 
 categoric_cols = X_train.select_dtypes(include=object).columns.tolist()
 
 std_scaler = SklearnTransformerWrapper(transformer=StandardScaler())
 OH_encoder = SklearnTransformerWrapper(transformer=OneHotEncoder(
-    sparse_output=False, drop='if_binary', min_frequency=0.1, handle_unknown='ignore'), variables=categoric_cols)
+    sparse_output=False, 
+    drop='if_binary', 
+    min_frequency=0.1, 
+    handle_unknown='ignore'), 
+    variables=categoric_cols)
 
 pipe = make_pipeline(std_scaler, OH_encoder, ElasticNet(max_iter=2000))
+alpha_range = np.linspace(70, 150, num=20)
 gs = GridSearchCV(n_jobs=3, estimator=pipe, cv=10, scoring='neg_root_mean_squared_error', param_grid={
-                  'elasticnet__l1_ratio': [0.7, 0.8, 0.9, 1.0], 'elasticnet__alpha': np.linspace(70, 150.0, num=20)})
+                  'elasticnet__l1_ratio': [0.7, 0.8, 0.9, 1.0], 'elasticnet__alpha': alpha_range})
 ```
 
 ### Fast and pretty model validation plots with Yellowbrick
@@ -44,7 +51,23 @@ gs = GridSearchCV(n_jobs=3, estimator=pipe, cv=10, scoring='neg_root_mean_square
 
 Your hyperparameter search with GridSearchCV may have covered multiple parameters. Choose one and validate it with Yellowbrick's **ValidationCurve** to make sure things look OK. 
 
-YELLOWBRICK VALIDATION CURVE GIST
+```
+# Create validation curve to increase confidence that algorithm is performing reasonably
+pipe_validation = make_pipeline(
+    std_scaler, OH_encoder, ElasticNet(l1_ratio=1.0, max_iter=2000))
+
+# Yellowbrick magic. Similar to GridSearchCV on a single parameter, but with a plot produced.
+viz = ValidationCurve(
+    pipe_validation, cv=10, param_name='elasticnet__alpha', param_range=alpha_range
+)
+
+# Fit and show the visualizer
+viz.fit(X_train, y_train)
+viz.show()
+```
+
+[Insert Validation Curve Image]
+
 
 ### Add AutoML and Extreme Gradient Boosting to your algorithm toolbox with AutoSklearn and XGBoost
 Sklearn has estimators for everything from regularized regression, to support vector machine, single decision trees, bagged trees, boosted trees, and deep neural nets. Yet XGBoost is widely used in industry, and AutoML is very powerful. 

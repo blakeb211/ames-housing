@@ -70,7 +70,7 @@ plt.rcParams['legend.handleheight'] = 1.125
 plt.rcParams['legend.numpoints'] = 1
 rect1 = patches.Rectangle((0, 0), 1, 1, facecolor='blue')
 rect2 = patches.Rectangle((0, 0), 1, 1, facecolor='orange')
-plt.legend((rect1, rect2), ('sklearn', 'helper lib'))
+plt.legend((rect1, rect2), ('sklearn', 'companion lib'))
 
 plt.savefig(fname="./article-sklearn-companions/score_barplot.png")
 plt.show()
