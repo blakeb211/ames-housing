@@ -17,11 +17,26 @@ Let's get to it.
 
 After ingestion and creating a train-test split, we construct preprocessing recipes called **Pipelines** to automate our preprocessing steps such as scaling and one-hot encoding. These are easy to read and guard against subtle data leakage during K-Fold validation.
 
-Feature Engine's *SklearnTransformWrapper* wraps our StandardScaler() and OneHotEncoder() so that we can put them directly into our Pipeline object. No more ColumnTransformer. Sklearn's *make_pipeline* names the steps for us. 
+Feature Engine's *SklearnTransformWrapper* wraps our StandardScaler() and OneHotEncoder() so that we can put them directly into our Pipeline object. No more ColumnTransformer. Data processed by this feature engine wrapper comes out the other side as a pandas dataframe instead of a numpy ndarray. 
+
+Sklearn's *make_pipeline* names the steps so that our GridSearchCV object can talk to our pipeline. Just query the step names (here, 'elasticnet') using `pipe.named_steps`.
 
 GridSearchCV tunes the hyperparameters through the name of each step. 
 
-PIPELINE GIST
+```
+# Left out Sklearn imports and dataframe creation 
+from feature_engine.wrappers import SklearnTransformerWrapper
+
+categoric_cols = X_train.select_dtypes(include=object).columns.tolist()
+
+std_scaler = SklearnTransformerWrapper(transformer=StandardScaler())
+OH_encoder = SklearnTransformerWrapper(transformer=OneHotEncoder(
+    sparse_output=False, drop='if_binary', min_frequency=0.1, handle_unknown='ignore'), variables=categoric_cols)
+
+pipe = make_pipeline(std_scaler, OH_encoder, ElasticNet(max_iter=2000))
+gs = GridSearchCV(n_jobs=3, estimator=pipe, cv=10, scoring='neg_root_mean_squared_error', param_grid={
+                  'elasticnet__l1_ratio': [0.7, 0.8, 0.9, 1.0], 'elasticnet__alpha': np.linspace(70, 150.0, num=20)})
+```
 
 ### Fast and pretty model validation plots with Yellowbrick
 
