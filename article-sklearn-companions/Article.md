@@ -8,7 +8,7 @@ I found a few Sklearn insights during a machine learning deep dive last year (se
 
 Insights are demonstrated on the Ames housing data set.
 
-![Score Barplot](./score_barplot.png)
+![Score Barplot](./figures/score_barplot.png)
 
 Let's get to it.
 
@@ -17,7 +17,7 @@ Let's get to it.
 
 After ingestion and creating a train-test split, we construct preprocessing recipes called **Pipelines** to automate our preprocessing steps such as scaling and one-hot encoding. These are easy to read and guard against subtle data leakage during K-Fold validation.
 
-Feature Engine's *SklearnTransformWrapper* wraps our StandardScaler() and OneHotEncoder() so that we can put them directly into our Pipeline object. No more ColumnTransformer. Data comes out as a dataframe so that we don't need to fumble with numpy ndarrays. You'll thank yourself if later work with that same scaler or encoder requires you to use it outside of the pipeline.
+Feature Engine's *SklearnTransformWrapper* wraps our StandardScaler() and OneHotEncoder() so that we can put them directly into our Pipeline object. No more ColumnTransformer. Data comes out as a dataframe so that we don't need to fumble with numpy ndarrays.
 
 Sklearn's *make_pipeline* names the steps so that our GridSearchCV object can talk to our pipeline. 
 Just query the step names with `pipe.named_steps`. For this example it tells us that our estimator is called 'elasticnet'.
@@ -49,7 +49,7 @@ gs = GridSearchCV(n_jobs=3, estimator=pipe, cv=10, scoring='neg_root_mean_square
 
 *Yellowbrick* has helper classes and functions to automatically create various important graphics and keep our thinking (mostly) up above the matplotlib api.**
 
-Your hyperparameter search with GridSearchCV may have covered multiple parameters. Choose one and validate it with Yellowbrick's **ValidationCurve** to make sure things look OK. 
+Your hyperparameter search with GridSearchCV may have covered multiple parameters. Choose one and validate it with Yellowbrick's **ValidationCurve**. 
 
 ```
 # Create validation curve to increase confidence that algorithm is performing reasonably
@@ -66,7 +66,7 @@ viz.fit(X_train, y_train)
 viz.show()
 ```
 
-[Insert Validation Curve Image]
+![Validation Curve](./figures/elasticnet_validation_curve.png)
 
 
 ### Add AutoML and Extreme Gradient Boosting to your algorithm toolbox with AutoSklearn and XGBoost

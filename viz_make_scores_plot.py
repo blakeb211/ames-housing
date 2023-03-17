@@ -72,5 +72,5 @@ rect1 = patches.Rectangle((0, 0), 1, 1, facecolor='blue')
 rect2 = patches.Rectangle((0, 0), 1, 1, facecolor='orange')
 plt.legend((rect1, rect2), ('sklearn', 'companion lib'))
 
-plt.savefig(fname="./article-sklearn-companions/score_barplot.png")
+plt.savefig(fname="./article-sklearn-companions/figures/score_barplot.png")
 plt.show()
