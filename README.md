@@ -18,7 +18,7 @@ with common python libaries, Sklearn, and its companion libraries.
 - Use `virtualenv` to create a virtual environment with Python 3.9. Activate the environment. Install the dependencies with pip.
 ``` 
 python3.9 -m venv env 
-source .env/bin/activate 
+source env/bin/activate 
 pip install -r requirements.txt
 ```
 
