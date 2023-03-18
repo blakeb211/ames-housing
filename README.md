@@ -1,5 +1,5 @@
 # What 
-- Practice the full modeling pipeline for linear models to neural nets to trees to AutoML 
+- Practice the full modeling pipeline, from linear models to neural nets to trees to AutoML 
 with common python libaries, Sklearn, and its companion libraries.
 - Heavily inspired by the Hands-On ML with R Book (Boehmke & Greenwell)
 - [Amazon Link](https://www.amazon.com/Hands-Machine-Learning-Chapman-Hall/dp/1138495689)
