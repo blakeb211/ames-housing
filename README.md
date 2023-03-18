@@ -1,16 +1,16 @@
-# From Linear Models To AutoML with Sklearn & Friends
-
 # What 
 - Demonstration notebooks showing the full modeling pipeline for linear models to neural nets to trees to AutoML 
 with common python libaries, Sklearn, and its companion libraries.
+- Heavily inspired by the Hands-On ML with R Book (Boehmke & Greenwell)
 
-# Why
-- Apply and explain knowledge from the resources at the bottom to a popular dataset.
+# Why 
+- I wanted to practice what I learned from this book by implementing much of the modeling in Python. It was also an enjoyable way to learn the python APIs since results could be compared to the book.
 
 # How
 - *ingestion.py* get called by each modeling notebook to generate dataframes for modeling
 - *metadata_helper.py* gets called by each modeling notebook to save the modeling metrics to csv and html files
 - Each modeling notebook (prefixed with *model_*) is independent from the others. They only depend on the two ingestion and score-saving scripts above.
+- *scores.csv* and *scores.html* get updated when any of the modeling notebooks are run 
 
 # Recommended setup
 - Use `virtualenv` to create a virtual environment with Python 3.9. Activate the environment. Install the dependencies with pip.
@@ -20,22 +20,11 @@ source .env/bin/activate
 pip install -r requirements.txt
 ```
 
-# Plan
-1. Ingestion and Wrangling
-1. Exploration
-1. Model (tuning, validation)
-1. Clean up comments
-1. Generate scores figure
-1. Save any other necessary figures
-1. Make and test code examples in article
-1. Finish article
-1. Publish to Medium
-1. Submit to TDS
-
 ## Models
 * Linear, KNN, Decision Tree, Bagged Trees, Random Forest, Gradient Boosted, AutoML 
 
 ## Simplified Algorithm Overviews
+
 ### Regularized Linear Regression (Ordinary Least Squares)  
 Solve the least squares problem to get weights (slopes) of each feature. Feature scaling is important. Regularization reduces co-linearity.
 
@@ -65,15 +54,13 @@ Algorithms for feature pre-processing are automatically applied, partially infor
 1. Removed 5 outliers observed in scatter plot of GrLivArea and SalePrice. 
 
 # Miscellaneous Observations
-1. Validation Curves shapes are model dependent. 
-1. Training time for SVR models with an rbf kernel depends heavily on the gamma parameter
-1. For a single decision tree, the validation curve may select a more complicated model 
-than what will generalize best to new data. This did not occur (for this dataset) with tree ensemble algorithms.
+1. Expected reasonable validation curves shapes are model dependent. E.g. for KNN the training validation score start out at 1.0, presumably because the 1-th nearest neighbor is equal or very similar to the test observation.
 1. Bagging (bootstrap aggregation) improves over a single decision tree quite a bit
+1. Training time for SVR models with an rbf kernel depends heavily on the gamma parameter
 
 # Machine Learning Resources
-1. Georgetown Data Science Certificate Program
 1. Hands-on Machine Learning with R book, Boehmke and Greenwell
+1. Georgetown Data Science Certificate Program
 1. Vectors Matrices and Least Squares book, Boyd and Vandenberghe
-1. ThinkStats
+1. ThinkStats, Allen Downey
 1. API docs and code for the various libraries Sklearn, Xgboost, AutoSklearn, Numpy, Pandas
