@@ -1,10 +1,10 @@
 # What 
-- Demonstration notebooks showing the full modeling pipeline for linear models to neural nets to trees to AutoML 
+- Practice the full modeling pipeline for linear models to neural nets to trees to AutoML 
 with common python libaries, Sklearn, and its companion libraries.
 - Heavily inspired by the Hands-On ML with R Book (Boehmke & Greenwell)
 
 # Why 
-- I wanted to practice what I learned from this book by implementing much of the modeling in Python. It was also an enjoyable way to learn the python APIs since results could be compared to the book.
+- I wanted to practice what I learned from this book by implementing much of the modeling in Python. It was also an enjoyable way to learn more about python APIs since results could be compared to the book.
 
 # How
 - *ingestion.py* get called by each modeling notebook to generate dataframes for modeling
