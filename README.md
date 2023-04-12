@@ -8,7 +8,7 @@
 
 # How
 - *ingestion.py* generates dataframes (either raw or with feature engineering) for modeling. It is called by exploration and modeling files
-- *exploration.py* explores the modeling dataset
+- *exploration.py* explores the feature engineered (i.e. cleaned) dataset
 - *metadata_helpers.py* gets called by the modeling notebooks to save the modeling metrics to csv and html files
 - Each modeling notebook (prefixed with *model_*) is independent from the others. They call functions in the ingestion and metadata scripts above.
 - *scores.csv* and *scores.html* hold a table of RMSD scores. They get updated when any of the modeling notebooks are run
