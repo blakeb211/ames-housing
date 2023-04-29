@@ -21,7 +21,7 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-## Models
+# Models
 * Linear, KNN, Decision Tree, Bagged Trees, Random Forest, Gradient Boosted, AutoML 
 
 # Feature Engineering Notes 
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 1. ThinkStats, Allen Downey
 1. API docs and code for the various libraries Sklearn, Xgboost, AutoSklearn, Numpy, Pandas
 
-## Extra notes: Simplified Algorithm Descriptions
+# Extra notes: Simplified Algorithm Descriptions
 
 ### Regularized Linear Regression (Ordinary Least Squares)  
 Solve the least squares problem to get weights (slopes) of each feature. Feature scaling is important. Regularization reduces co-linearity.
