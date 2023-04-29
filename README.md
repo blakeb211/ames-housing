@@ -33,14 +33,7 @@ pip install -r requirements.txt
 1. Bagging (bootstrap aggregation) improves over a single decision tree quite a bit
 1. Training time for SVR models with an rbf kernel depends heavily on the gamma parameter
 
-# Machine Learning Resources
-1. Hands-on Machine Learning with R book, Boehmke and Greenwell
-1. Georgetown Data Science Certificate Program
-1. Vectors Matrices and Least Squares book, Boyd and Vandenberghe
-1. ThinkStats, Allen Downey
-1. API docs and code for the various libraries Sklearn, Xgboost, AutoSklearn, Numpy, Pandas
-
-# Extra notes: Simplified Algorithm Descriptions
+# Simplified Algorithm Descriptions
 
 ### Regularized Linear Regression (Ordinary Least Squares)  
 Solve the least squares problem to get weights (slopes) of each feature. Feature scaling is important. Regularization reduces co-linearity.
@@ -65,3 +58,10 @@ The layer sizes of the neural network (layer sizes) is chosen. Since the feedfor
 
 ### AutoML  
 Algorithms for feature pre-processing are automatically applied, partially informed by a database of what worked on previous similar datasets. Several models are created and ranked. A group (ensemble) of models with different error shapes are stacked together. A voting procedure combines their answers to give the final prediction. 
+
+# Machine Learning Resources
+1. Hands-on Machine Learning with R book, Boehmke and Greenwell
+1. Georgetown Data Science Certificate Program
+1. Vectors Matrices and Least Squares book, Boyd and Vandenberghe
+1. ThinkStats, Allen Downey
+1. API docs and code for the various libraries Sklearn, Xgboost, AutoSklearn, Numpy, Pandas
